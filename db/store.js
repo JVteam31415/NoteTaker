@@ -20,21 +20,27 @@ class Store{
 
     //create a function to getNotes
     getNotes(){
-        var output = this.read()
-        console.log(typeof(output));
-        console.log(output.title)
-        return output;
+        return this.read().then((notes) =>{ 
+            //do your stuff here
+            console.log(notes)
+            console.log(typeof(notes))
+           return [JSON.parse(notes)]
+
+        })
+        
     }
 
     //create a function to addNotes
     addNotes(note){
         //give id to note
-        console.log(note.body);
+        console.log("going to write",note.body);
         var id = uuidv4();
+        var toBeWritten = note.body;
+        toBeWritten["id"]=id
         //note["id"] = id;
         //console.log(note);
-        this.write(note.body);
-        return this.read();
+        this.write(toBeWritten);
+        return this.getNotes();
 
     }
 

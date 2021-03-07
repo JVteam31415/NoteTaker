@@ -8,6 +8,9 @@ router.get("/notes", (req,res)=>{
     store
     .getNotes()
     .then( (notes)=>{
+        console.log("getting in apiroutes "+typeof(notes) );
+        console.log(notes)
+        //console.log("returning"+typeof(res.json(notes)))
         return res.json(notes);
     })
     .catch( (err)=>res.status(500).json(err))
@@ -19,6 +22,8 @@ router.post("/notes", (req,res)=>{
     store
     .addNotes(req)
     .then( (notes)=>{
+        console.log("posting in apiroutes "+typeof(notes) );
+        console.log(notes)
         return res.json(notes);
     })
     .catch( (err)=>res.status(500).json(err))
