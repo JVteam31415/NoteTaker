@@ -15,7 +15,15 @@ router.get("/notes", (req,res)=>{
 })
 
 //post request
+router.post("/notes", (req,res)=>{
+    store
+    .addNotes(req)
+    .then( (notes)=>{
+        return res.json(notes);
+    })
+    .catch( (err)=>res.status(500).json(err))
 
+})
 //delete request
 
 

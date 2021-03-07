@@ -11,7 +11,7 @@ const PORT = process.nextTick.PORT || 3000;
 //setting up body parsing
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use(express.statis('public'));
+app.use(express.static('public'));
 
 //bring in routes
 app.use("/api",apiRoutes);
