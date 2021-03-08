@@ -22,9 +22,9 @@ class Store{
     getNotes(){
         return this.read().then((notes) =>{ 
             //do your stuff here
-            console.log(notes)
-            console.log(typeof(notes))
-           return [JSON.parse(notes)]
+           // console.log(notes)
+            //console.log(typeof(notes))
+           return JSON.parse(notes)
 
         })
         
@@ -39,14 +39,35 @@ class Store{
         toBeWritten["id"]=id
         //note["id"] = id;
         //console.log(note);
-        this.write(toBeWritten);
+        this.read().then((notes) =>{ 
+            //do your stuff here
+            //console.log(notes)
+            //console.log(typeof(notes))
+            var past = JSON.parse(notes)
+            past.push(toBeWritten);
+            this.write(past);
+        })
+            
         return this.getNotes();
 
     }
 
     //create a function to removeNotes BY ID
-    removeNotes(id){
+    deleteNote(url){
+        this.read().then((notes) =>{ 
+            //do your stuff here
+            var id = url.substring(url.lastIndexOf('/') + 1);
+            console.log(notes)
+            console.log(typeof(notes))
+            var past = JSON.parse(notes)
+            console.log("Trying to delete", id)
+            //search past for an id that matches id
+            var future = past.filter(element=>element.id!=id);
 
+
+            this.write(future);
+        })
+        return this.getNotes();
     }
 }
 
