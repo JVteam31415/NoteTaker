@@ -57,10 +57,10 @@ class Store{
         this.read().then((notes) =>{ 
             //do your stuff here
             var id = url.substring(url.lastIndexOf('/') + 1);
-            console.log(notes)
-            console.log(typeof(notes))
+            //console.log(notes)
+            //console.log(typeof(notes))
             var past = JSON.parse(notes)
-            console.log("Trying to delete", id)
+            //console.log("Trying to delete", id)
             //search past for an id that matches id
             var future = past.filter(element=>element.id!=id);
 

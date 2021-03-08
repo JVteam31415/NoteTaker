@@ -33,13 +33,12 @@ router.post("/notes", (req,res)=>{
 //delete request
 router.delete("/notes/:id", (req,res)=>{
     //console.log(req)
-    //NEED TO GET ID SOMEHOW
-    console.log(req.originalUrl)
+    //console.log(req.originalUrl)
     store
     .deleteNote(req.originalUrl)
     .then( (notes)=>{
-        console.log("deleting in apiroutes "+typeof(notes) );
-        console.log(notes)
+        //console.log("deleting in apiroutes "+typeof(notes) );
+        //console.log(notes)
         return res.json(notes);
     })
     .catch( (err)=>res.status(500).json(err))
