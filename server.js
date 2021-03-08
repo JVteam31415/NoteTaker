@@ -7,7 +7,7 @@ const apiRoutes = require("./routes/apiRoutes.js")
 //INitialize application, create port
 const app = express();
 
-const PORT = process.nextTick.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 //setting up body parsing
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
